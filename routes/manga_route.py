@@ -32,7 +32,7 @@ async def update_manga(manga_id, manga: Manga):
     return {"message": f"updated {manga_id} successfully"}
 
 
-@app.put("/manga/{manga_id}/chapter")
+@man.put("/manga/{manga_id}/chapter")
 async def update_manga_chapter(manga_id: str, chapter: Chapter):
     chapter_json = jsonable_encoder(chapter)
     manga_collection.find_one_and_update({"_id": ObjectId(manga_id)},

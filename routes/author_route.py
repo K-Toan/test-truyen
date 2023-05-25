@@ -27,4 +27,4 @@ async def create_author(author: Author):
 async def update_author(author_id, author: Author):
     author_collection.find_one_and_update({"_id": ObjectId(author_id)},
                                           {"$set": dict(author)})
-    return {"message": f"updated {author_id} successfully"}
+    return serialize_dict(author_collection.find_one({"_id": ObjectId(author_id)}))
